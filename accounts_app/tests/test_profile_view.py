@@ -11,6 +11,7 @@ class TestProfileView(TestCase):
             password="test",
             first_name="John",
             last_name="Doe",
+            occupation='Dev',
         )
         self.client.force_login(self.user)
 
@@ -22,6 +23,7 @@ class TestProfileView(TestCase):
         context = response.context
         self.assertEqual(context["user"].first_name, "John")
         self.assertEqual(context["user"].last_name, "Doe")
+        self.assertEqual(context["user"].occupation, "Dev")
 
     def test_post(self):
         response = self.client.post(
@@ -29,6 +31,7 @@ class TestProfileView(TestCase):
             {
                 "first_name": "Jane",
                 "last_name": "Sample",
+                "occupation": "Dev"
             },
         )
 
@@ -37,6 +40,7 @@ class TestProfileView(TestCase):
         context = response.context
         self.assertEqual(context["user"].first_name, "Jane")
         self.assertEqual(context["user"].last_name, "Sample")
+        self.assertEqual(context["user"].occupation, "Dev")
 
         # validate no errors in form
         self.assertFalse(context["form"].errors)
