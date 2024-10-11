@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Fonts
+*/
+@font-face {
+    font-family: 'BasierSquare';
+    src: url('../fonts/basiersquare-regular-webfont.woff2') format('woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'BasierSquare';
+    src: url('../fonts/basiersquare-medium-webfont.woff2') format('woff2');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'BasierSquare';
+    src: url('../fonts/basiersquare-semibold-webfont.woff2') format('woff2');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'BasierSquare';
+    src: url('../fonts/basiersquare-bold-webfont.woff2') format('woff2');
+    font-weight: 700;
+}
+
+:root {
+    text-rendering:optimizeLegibility;
+}
+
+/* 
+  HTMX
+*/
+
+/* 
+  Define htmx indicator slightly different than default, 
+  since default behavior bubbles too hard.  
+*/
+.htmx-indicator {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
+
+body :not(body) .htmx-request .htmx-indicator {
+    opacity: 1
+}
+
+.htmx-request.htmx-indicator {
+    opacity: 1
+}
+
+body :not(body) .htmx-request .htmx-indicator-inverse {
+    opacity: 0;
+
+}
+
+.htmx-indicator-inverse {
+    opacity: 1;
+    transition: opacity 200ms ease-in-out;
+}
+
+/* 
+  Unsorted
+*/
+
+.max-height-600 {
+    max-height: 600px;
+}
+
+img.dragging {
+    opacity: 0.5;
+}
+
+*:focus {
+    outline: none !important;
+}

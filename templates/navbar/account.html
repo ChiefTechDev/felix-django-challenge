@@ -1,0 +1,24 @@
+{% if request.user.is_authenticated %}
+    <div id="navbar_account" class="hs-dropdown [--strategy:static] sm:[--strategy:absolute] [--adaptive:none] sm:[--trigger:hover] relative">
+        <button type="button"
+                id="account-button"
+                class="sm:py-3 flex items-center w-full text-gray-600 hover:text-gray-400 font-medium dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+            <span class="flex gap-2 items-center text-white">
+                {% include 'navbar/user.svg' %}
+                {% if request.user.first_name and request.user.last_name %}
+                    {{ request.user.full_name }}
+                {% else %}
+                    Account
+                {% endif %}
+            </span>
+        </button>
+        <div class="hs-dropdown-menu transition-[opacity,margin] sm:border duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 hidden z-10 top-full sm:w-48 bg-white sm:shadow-md rounded-lg py-2 sm:px-2 dark:bg-gray-800 sm:dark:border dark:border-gray-700 dark:divide-gray-700">
+            <div class="flex flex-col">
+                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                   href="{% url 'home' %}">Manage Profile</a>
+                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                   href="{% url 'sign_out' %}">Sign Out</a>
+            </div>
+        </div>
+    </div>
+{% endif %}

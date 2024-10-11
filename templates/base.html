@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible"
+              content="IE=edge">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+              content="e1+ coding challenge">
+        <meta name="keywords"
+              content="e1+ coding challenge">
+        <title>e1+ coding challenge</title>
+        <link rel="icon"
+              href="{% static 'images/favicon.png' %}"
+              type="image/x-icon">
+        <link rel="stylesheet" href="{% static 'src/styles.css' %}">
+        <script src="{% static 'src/preline.js' %}"></script>
+        <script src="{% static 'src/htmx.min.js' %}"></script>
+        <script src="{% static 'src/htmx-multi-swap.js' %}"></script>
+        <script src="{% static 'src/hyperscript.js' %}"></script>
+        <script src="{% static 'src/preline_patches.js' %}"></script>
+    </head>
+    <body class="bg-gray-50 dark:bg-slate-900"
+          hx-ext="multi-swap">
+        <div class="w-full mx-auto">
+            {% include "navbar/navbar.html" %}
+            {% block content %}
+                This is an empty page and should never be seen.
+            {% endblock content %}
+        </div>
+        <script>
+            // noinspection JSUnresolvedReference
+            window.htmx.onLoad(function() {
+                window.HSDropdown.autoInit();
+                window.HSOverlay.autoInit();
+                window.HSCopyMarkup.autoInit();
+                window.HSInputNumber.autoInit();
+                window.HSTooltip.autoInit();
+                window.HSSelect.autoInit();
+                window.HSStaticMethods.autoInit();
+            })
+        </script>
+    </body>
+</html>
